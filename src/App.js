@@ -7,6 +7,8 @@ import {
   Jumbotron,
   Button,
 } from 'react-bootstrap';
+import React, { useState } from 'react';
+
 function App() {
   return (
     <div className="App">
@@ -42,8 +44,8 @@ function App() {
         </Container>
       </Navbar>
 
-      <Jumbotron>
-        <h1>Hello, world!</h1>
+      <Jumbotron className="background">
+        <h1 color="white">30% Season Sale</h1>
         <p>
           This is a simple hero unit, a simple jumbotron-style component for
           calling extra attention to featured content or information.
@@ -52,6 +54,37 @@ function App() {
           <Button variant="primary">Learn more</Button>
         </p>
       </Jumbotron>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-4">
+            <img
+              src="https://codingapple1.github.io/shop/shoes1.jpg"
+              width="100%"
+              alt="profile"
+            ></img>
+            <h4>상품명</h4>
+            <p>Made by France & 120,000원</p>
+          </div>
+          <div className="col-md-4">
+            <img
+              src="https://codingapple1.github.io/shop/shoes2.jpg"
+              width="100%"
+              alt="profile"
+            ></img>
+            <h4>상품명</h4>
+            <p>Made by Italy & 500,000원</p>
+          </div>
+          <div className="col-md-4">
+            <img
+              src="https://codingapple1.github.io/shop/shoes3.jpg"
+              width="100%"
+              alt="profile"
+            ></img>
+            <h4>상품명</h4>
+            <p>설명 & 가격</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
