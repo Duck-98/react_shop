@@ -21,28 +21,33 @@ function App() {
     <>
       <div className="App">
         <Header />
+        <Switch>
+          <Route exact path="/">
+            <Jumbotron className="background">
+              <h1 color="white">30% Season Sale</h1>
+              <p>
+                This is a simple hero unit, a simple jumbotron-style component
+                for calling extra attention to featured content or information.
+              </p>
+              <p>
+                <Button variant="primary">Learn more</Button>
+              </p>
+            </Jumbotron>
+            <div className="container">
+              {shoeData.map((a, i) => {
+                return <Product shoeData={shoeData[i]} i={i} key={i} />;
+              })}
+            </div>
+          </Route>
 
-        <Route exact path="/">
-          <Jumbotron className="background">
-            <h1 color="white">30% Season Sale</h1>
-            <p>
-              This is a simple hero unit, a simple jumbotron-style component for
-              calling extra attention to featured content or information.
-            </p>
-            <p>
-              <Button variant="primary">Learn more</Button>
-            </p>
-          </Jumbotron>
-          <div className="container">
-            {shoeData.map((a, i) => {
-              return <Product shoeData={shoeData[i]} i={i} key={i} />;
-            })}
-          </div>
-        </Route>
+          <Route path="/detail">
+            <Detail />
+          </Route>
 
-        <Route path="/detail">
-          <Detail />
-        </Route>
+          <Route path="/:id">
+            <div>아무거나</div>
+          </Route>
+        </Switch>
       </div>
     </>
   );
