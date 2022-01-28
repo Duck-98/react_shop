@@ -1,6 +1,7 @@
 /* eslint-disable eqeqeq */
 import React, { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import styled from 'styled-components';
 
 const Detail = (props) => {
   const { id } = useParams();
@@ -15,7 +16,7 @@ const Detail = (props) => {
           <img
             src={
               'https://codingapple1.github.io/shop/shoes' +
-              selectItem.id +
+              (selectItem.id + 1) +
               '.jpg'
             }
             width="100%"
