@@ -40,8 +40,8 @@ function App() {
             </div>
           </Route>
 
-          <Route path="/detail">
-            <Detail />
+          <Route path="/detail/:id">
+            <Detail shoeData={shoeData} />
           </Route>
 
           <Route path="/:id">
