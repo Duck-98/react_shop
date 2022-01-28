@@ -24,7 +24,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Jumbotron className="background">
-              <h1 color="white">30% Season Sale</h1>
+              <h1>30% Season Sale</h1>
               <p>
                 This is a simple hero unit, a simple jumbotron-style component
                 for calling extra attention to featured content or information.
