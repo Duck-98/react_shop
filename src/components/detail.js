@@ -2,6 +2,14 @@
 import React, { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import './detail.css';
+const Box = styled.div`
+  padding: 20px;
+`;
+const Subject = styled.h4`
+  font-size: 25px;
+  color: ${(props) => props.colors};
+`;
 
 const Detail = (props) => {
   const { id } = useParams();
@@ -11,6 +19,9 @@ const Detail = (props) => {
   }); // data의 id 고유 값을 이용하여 id 값이 일치하는 값만 불러올 수 있게 find함수를 이용하여 설정
   return (
     <div className="container">
+      <Box>
+        <Subject colors={'black'}>Detail</Subject>
+      </Box>
       <div className="row">
         <div className="col-md-6">
           <img
