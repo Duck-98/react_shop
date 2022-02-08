@@ -38,6 +38,7 @@ function App() {
                 return <Product shoeData={shoeData[i]} i={i} key={i} />;
               })}
             </div>
+            <button> 더보기 </button>
           </Route>
 
           <Route path="/detail/:id">
