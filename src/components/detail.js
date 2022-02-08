@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import './detail.css';
+import './detail.scss';
+
 const Box = styled.div`
   padding: 20px;
 `;
@@ -20,7 +21,7 @@ const Detail = (props) => {
   return (
     <div className="container">
       <Box>
-        <Subject colors={'black'}>Detail</Subject>
+        <Subject className="red">Detail</Subject>
       </Box>
       <div className="row">
         <div className="col-md-6">
