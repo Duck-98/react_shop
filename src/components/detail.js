@@ -1,5 +1,5 @@
 /* eslint-disable eqeqeq */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import './detail.scss';
@@ -13,6 +13,19 @@ const Subject = styled.h4`
 `;
 
 const Detail = (props) => {
+  const [alert, setAlert] = useState(true);
+  const [data, setData] = useState('');
+
+  useEffect(() => {
+    // component가 Mount 될 때 컴포넌트가 UPDATE될 때 특정 코드를 실행시킬 수 있다.
+    const timer = setTimeout(() => {
+      setAlert(false);
+    }, 2000);
+    return () => {
+      clearTimeout(timer); // 타이머가 종료되게 해줌
+    };
+  }, [alert, data]); // alert가 변경이 될때만 실행이 됨.
+
   const { id } = useParams();
   const history = useHistory();
   const selectItem = props.shoeData.find(function (item) {
@@ -23,9 +36,18 @@ const Detail = (props) => {
       <Box>
         <Subject className="red">Detail</Subject>
       </Box>
-      <div className="my-alert2">
-        <p>재고가 얼마 남지 않았습니다.</p>
-      </div>
+      <input
+        onChange={(e) => {
+          setData(e.target.value);
+        }}
+      />
+
+      {alert === true ? (
+        <div className="my-alert2">
+          <p>재고가 얼마 남지 않았습니다.</p>
+        </div>
+      ) : null}
+
       <div className="row">
         <div className="col-md-6">
           <img
