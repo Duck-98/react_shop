@@ -1,3 +1,38 @@
+@import './recet.scss';
+
+@mixin function() {
+  background: #eeeeee;
+  padding: 2px;
+  border-radius: 5px;
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
+}
 .red {
   color: red;
+}
+/*
+div.container p {
+  color: green;
+}
+
+div.container {
+  h4 {
+    color: blue;
+  }
+  p {
+    color: gray;
+  }
+}
+*/
+.my-alert {
+  @include function();
+}
+.my-alert p {
+  margin-bottom: 0;
+}
+
+.my-alert2 {
+  @extend .my-alert;
+  background: #ffe591;
 }

@@ -23,6 +23,9 @@ const Detail = (props) => {
       <Box>
         <Subject className="red">Detail</Subject>
       </Box>
+      <div className="my-alert2">
+        <p>재고가 얼마 남지 않았습니다.</p>
+      </div>
       <div className="row">
         <div className="col-md-6">
           <img
