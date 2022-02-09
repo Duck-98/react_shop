@@ -14,6 +14,7 @@ import data from './data';
 import { Link, Route, Switch } from 'react-router-dom';
 import Detail from './components/detail';
 import Header from './components/header';
+import axios from 'axios';
 
 function App() {
   const [shoeData, setShoeData] = useState(data);
@@ -38,7 +39,21 @@ function App() {
                 return <Product shoeData={shoeData[i]} i={i} key={i} />;
               })}
             </div>
-            <button> 더보기 </button>
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                axios
+                  .get('https://codingapple1.github.io/shop/data2.json')
+                  .then((result) => {
+                    console.log('성공', result.data);
+                  })
+                  .catch(() => {
+                    console.log('실패');
+                  }); // sever에 get 요청
+              }}
+            >
+              더보기
+            </button>
           </Route>
 
           <Route path="/detail/:id">
