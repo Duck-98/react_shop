@@ -4,6 +4,8 @@ import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import './detail.scss';
 import Inventory from './Inventory';
+import { Nav } from 'react-bootstrap';
+import { CSSTransition } from 'react-transition-group';
 
 const Box = styled.div`
   padding: 20px;
@@ -16,6 +18,8 @@ const Subject = styled.h4`
 const Detail = (props) => {
   const [alert, setAlert] = useState(true);
   const [data, setData] = useState('');
+  const [tab, setTab] = useState(0);
+  const [value, setValue] = useState(false);
 
   useEffect(() => {
     // component가 Mount 될 때 컴포넌트가 UPDATE될 때 특정 코드를 실행시킬 수 있다.
@@ -85,8 +89,47 @@ const Detail = (props) => {
           </button>
         </div>
       </div>
+      <Nav className="mt-5" variant="tabs" defaultActiveKey="link-0">
+        <Nav.Item>
+          <Nav.Link
+            eventKey="link-0"
+            onClick={() => {
+              setValue(false);
+              setTab(0);
+            }}
+          >
+            Active
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link
+            eventKey="link-1"
+            onClick={() => {
+              setValue(false);
+              setTab(1);
+            }}
+          >
+            Option 2
+          </Nav.Link>
+        </Nav.Item>
+      </Nav>
+      <CSSTransition in={value} classNames="wow" timeout={500}>
+        <TabContent tab={tab} setValue={setValue} />
+      </CSSTransition>
     </div>
   );
+};
+
+const TabContent = (props) => {
+  useEffect(() => {
+    props.setValue(true);
+  });
+
+  if (props.tab === 0) {
+    return <div>0번째 내용</div>;
+  } else if (props.tab === 1) {
+    return <div>1번째 내용</div>;
+  }
 };
 
 export default Detail;

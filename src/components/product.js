@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
-import { rangecontext } from './App.js';
+import { rangecontext } from '/Users/duckuengna/Desktop/Coding/코딩애플 리액트/shop/src/App.js';
 const Product = (props) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const item = useContext(rangecontext);
   return (
     <>
