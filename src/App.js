@@ -10,7 +10,7 @@ import {
   Jumbotron,
   Button,
 } from 'react-bootstrap';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Product from './components/product';
 import data from './data';
 import { Link, Route, Switch } from 'react-router-dom';
@@ -18,10 +18,13 @@ import Detail from './components/detail';
 import Header from './components/header';
 import axios from 'axios';
 
+export const rangecontext = React.createContext(); // 같은 변수 값을 공유할 범위 생성
+
 function App() {
   const [shoeData, setShoeData] = useState(data);
   const [loading, setLoading] = useState(false);
   const [inventory, setInventory] = useState([10, 11, 12]);
+
   return (
     <>
       <div className="App">
@@ -39,9 +42,17 @@ function App() {
               </p>
             </Jumbotron>
             <div className="container">
-              {shoeData.map((a, i) => {
-                return <Product shoeData={shoeData[i]} i={i} key={i} />;
-              })}
+              <div className="row">
+                {shoeData.map((a, i) => {
+                  return (
+                    <rangecontext.Provider value={inventory}>
+                      {' '}
+                      {/* value={공유하고싶은 값}*/}
+                      <Product shoeData={shoeData[i]} i={i} key={i} />
+                    </rangecontext.Provider>
+                  );
+                })}
+              </div>
             </div>
             {loading === true ? (
               <div className="loading">

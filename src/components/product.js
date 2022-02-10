@@ -1,8 +1,8 @@
-import React from 'react';
-
+import React, { useContext } from 'react';
+import { rangecontext } from './App.js';
 const Product = (props) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-
+  const item = useContext(rangecontext);
   return (
     <>
       <div className="col-md-4" key={props.shoeData.id}>
