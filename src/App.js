@@ -1,3 +1,5 @@
+/* eslint-disable no-lone-blocks */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-unused-vars */
 import './App.css';
 import {
@@ -18,6 +20,7 @@ import axios from 'axios';
 
 function App() {
   const [shoeData, setShoeData] = useState(data);
+  const [loading, setLoading] = useState(false);
   return (
     <>
       <div className="App">
@@ -39,16 +42,26 @@ function App() {
                 return <Product shoeData={shoeData[i]} i={i} key={i} />;
               })}
             </div>
+            {loading === true ? (
+              <div className="loading">
+                <p>로딩중입니다.</p>
+              </div>
+            ) : null}
             <button
               className="btn btn-primary"
               onClick={() => {
+                // eslint-disable-next-line no-lone-blocks
+                setLoading(true);
                 axios
                   .get('https://codingapple1.github.io/shop/data2.json')
                   .then((result) => {
                     console.log('성공', result.data);
+                    setLoading(false);
+                    setShoeData([...shoeData, ...result.data]); // shoeData copy본 생성
                   })
                   .catch(() => {
                     console.log('실패');
+                    setLoading(true);
                   }); // sever에 get 요청
               }}
             >
