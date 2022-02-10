@@ -98,7 +98,7 @@ const Detail = (props) => {
               setTab(0);
             }}
           >
-            Active
+            상품설명
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
@@ -109,7 +109,7 @@ const Detail = (props) => {
               setTab(1);
             }}
           >
-            Option 2
+            배송정보
           </Nav.Link>
         </Nav.Item>
       </Nav>

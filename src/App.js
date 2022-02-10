@@ -2,20 +2,14 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-unused-vars */
 import './App.css';
-import {
-  Container,
-  Navbar,
-  Nav,
-  NavDropdown,
-  Jumbotron,
-  Button,
-} from 'react-bootstrap';
+import { Jumbotron, Button } from 'react-bootstrap';
 import React, { useState, useContext } from 'react';
 import Product from './components/product';
 import data from './data';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Detail from './components/detail';
 import Header from './components/header';
+import Cart from './components/Cart';
 import axios from 'axios';
 
 export const rangecontext = React.createContext(); // 같은 변수 값을 공유할 범위 생성
@@ -89,8 +83,8 @@ function App() {
             />
           </Route>
 
-          <Route path="/:id">
-            <div>아무거나</div>
+          <Route path="/cart">
+            <Cart> </Cart>
           </Route>
         </Switch>
       </div>

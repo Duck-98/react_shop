@@ -23,7 +23,10 @@ const Header = () => {
               <Link to="/">Home</Link>
             </Nav.Link>
             <Nav.Link>
-              <Link to="/detail">Detail</Link>
+              <Link to="/detail/">Detail</Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to="/cart">Cart</Link>
             </Nav.Link>
             <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
