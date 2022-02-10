@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import './detail.scss';
+import Inventory from './Inventory';
 
 const Box = styled.div`
   padding: 20px;
@@ -64,7 +65,16 @@ const Detail = (props) => {
           <h4 className="pt-5">{selectItem.title}</h4>
           <p>{selectItem.content}</p>
           <p>{selectItem.price}</p>
-          <button className="btn btn-danger">주문하기</button>
+          <Inventory inventory={props.inventory} />
+
+          <button
+            className="btn btn-danger"
+            onClick={() => {
+              props.setInventory([9, 10, 11]);
+            }}
+          >
+            주문하기
+          </button>
           <button
             className="btn btn-danger"
             onClick={() => {

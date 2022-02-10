@@ -21,6 +21,7 @@ import axios from 'axios';
 function App() {
   const [shoeData, setShoeData] = useState(data);
   const [loading, setLoading] = useState(false);
+  const [inventory, setInventory] = useState([10, 11, 12]);
   return (
     <>
       <div className="App">
@@ -70,7 +71,11 @@ function App() {
           </Route>
 
           <Route path="/detail/:id">
-            <Detail shoeData={shoeData} />
+            <Detail
+              shoeData={shoeData}
+              inventory={inventory}
+              setInventory={setInventory}
+            />
           </Route>
 
           <Route path="/:id">
