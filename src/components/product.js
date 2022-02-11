@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { rangecontext } from '/Users/duckuengna/Desktop/Coding/코딩애플 리액트/shop/src/App.js';
+// import { rangecontext } from '/Users/duckuengna/Desktop/Coding/코딩애플 리액트/shop/src/App.js';
 const Product = (props) => {
-  const item = useContext(rangecontext);
+  // const item = useContext(rangecontext);
   return (
     <>
       <div className="col-md-4" key={props.shoeData.id}>

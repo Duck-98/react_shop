@@ -6,6 +6,7 @@ import './detail.scss';
 import Inventory from './Inventory';
 import { Nav } from 'react-bootstrap';
 import { CSSTransition } from 'react-transition-group';
+import { connect } from 'react-redux';
 
 const Box = styled.div`
   padding: 20px;
@@ -75,6 +76,11 @@ const Detail = (props) => {
             className="btn btn-danger"
             onClick={() => {
               props.setInventory([9, 10, 11]);
+              props.dispatch({
+                type: 'add',
+                payload: { id: 2, name: '새로운 상품', quan: 1 },
+              });
+              history.push('/cart'); // 버튼을 클릭 했을 때 지정된 링크로 자동으로 이동하게 해줌.
             }}
           >
             주문하기
@@ -132,4 +138,12 @@ const TabContent = (props) => {
   }
 };
 
-export default Detail;
+function data(state) {
+  // redux store data를 가져와서 props로 변환
+  return {
+    state: state.reducer,
+    alertState: state.reducer2,
+  };
+}
+
+export default connect(data)(Detail);
