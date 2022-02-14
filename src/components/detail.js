@@ -78,7 +78,7 @@ const Detail = (props) => {
               props.setInventory([9, 10, 11]);
               props.dispatch({
                 type: 'add',
-                payload: { id: 2, name: '새로운 상품', quan: 1 },
+                payload: { id: selectItem.id, name: selectItem.title, quan: 1 },
               });
               history.push('/cart'); // 버튼을 클릭 했을 때 지정된 링크로 자동으로 이동하게 해줌.
             }}

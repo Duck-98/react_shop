@@ -8,7 +8,7 @@ import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
 let basicState = [
-  { id: 0, name: '멋진 신발1', quan: 2 },
+  { id: 0, name: '멋진 신발', quan: 3 },
   { id: 1, name: '멋진 신발2', quan: 3 },
 ];
 
@@ -26,16 +26,25 @@ function reducer2(state = adState, action) {
 
 function reducer(state = basicState, action) {
   if (action.type === 'add') {
-    let copy = [...state];
-    copy.push(action.payload);
-    return copy;
+    let found = state.findIndex((a) => {
+      return a.id === action.payload.id;
+    });
+    console.log(action.payload.id);
+    if (found >= 0) {
+      let copy = [...state];
+      copy[found].quan++;
+    } else {
+      let copy = [...state];
+      copy.push(action.payload);
+      return copy;
+    }
   } else if (action.type === 'increase') {
     let copy = [...state];
-    copy[0].quan++; // copy를 만들고 수정
+    copy[action.data].quan++; // copy를 만들고 수정
     return copy;
   } else if (action.type === 'decrease') {
     let copy = [...state];
-    copy[0].quan--;
+    copy[action.data].quan--;
     return copy;
   } else {
     return state;

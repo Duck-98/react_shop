@@ -26,14 +26,14 @@ const Cart = (props) => {
                   <td>
                     <button
                       onClick={() => {
-                        dispatch({ type: 'increase' });
+                        dispatch({ type: 'increase', data: a.id });
                       }}
                     >
                       +
                     </button>
                     <button
                       onClick={() => {
-                        dispatch({ type: 'decrease' });
+                        dispatch({ type: 'decrease', data: a.id });
                       }}
                     >
                       -
