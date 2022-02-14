@@ -1,8 +1,11 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
-import { connect } from 'react-redux';
+import { connect, useSelector, useDispatch } from 'react-redux';
 
 const Cart = (props) => {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  console.log(state.reducer);
   return (
     <>
       <div>
@@ -14,7 +17,7 @@ const Cart = (props) => {
             <th>변경</th>
           </tr>
           <tbody>
-            {props.state.map((a, i) => {
+            {state.reducer.map((a, i) => {
               return (
                 <tr key={i}>
                   <td>{a.id}</td>
@@ -23,14 +26,14 @@ const Cart = (props) => {
                   <td>
                     <button
                       onClick={() => {
-                        props.dispatch({ type: 'increase' });
+                        dispatch({ type: 'increase' });
                       }}
                     >
                       +
                     </button>
                     <button
                       onClick={() => {
-                        props.dispatch({ type: 'decrease' });
+                        dispatch({ type: 'decrease' });
                       }}
                     >
                       -
@@ -46,7 +49,7 @@ const Cart = (props) => {
             <p>지금 구매하면 신규 할인 20%</p>
             <button
               onClick={() => {
-                props.dispatch({ type: 'exit' });
+                dispatch({ type: 'exit' });
               }}
             >
               x
@@ -57,7 +60,7 @@ const Cart = (props) => {
     </>
   );
 };
-
+/*
 function data(state) {
   // redux store data를 가져와서 props로 변환
   return {
@@ -67,3 +70,5 @@ function data(state) {
 }
 
 export default connect(data)(Cart);
+*/
+export default Cart;

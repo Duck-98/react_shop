@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 // import { rangecontext } from '/Users/duckuengna/Desktop/Coding/코딩애플 리액트/shop/src/App.js';
 const Product = (props) => {
   // const item = useContext(rangecontext);
