@@ -22,6 +22,9 @@ const Detail = (props) => {
   const [tab, setTab] = useState(0);
   const [value, setValue] = useState(false);
 
+  const [count, setCount] = useState(0);
+  const [age, setAge] = useState(20);
+
   useEffect(() => {
     // component가 Mount 될 때 컴포넌트가 UPDATE될 때 특정 코드를 실행시킬 수 있다.
     const timer = setTimeout(() => {
@@ -31,6 +34,12 @@ const Detail = (props) => {
       clearTimeout(timer); // 타이머가 종료되게 해줌
     };
   }, [alert, data]); // alert가 변경이 될때만 실행이 됨.
+
+  useEffect(() => {
+    if (count != 0 && count < 3) {
+      setAge(age + 1);
+    }
+  }, [count]);
 
   const { id } = useParams();
   const history = useHistory();
@@ -42,11 +51,18 @@ const Detail = (props) => {
       <Box>
         <Subject className="red">Detail</Subject>
       </Box>
-      <input
-        onChange={(e) => {
-          setData(e.target.value);
-        }}
-      />
+
+      <div>
+        <div>안녕하세요 전 {age}</div>
+        <button
+          onClick={() => {
+            setCount(count + 1);
+            console.log(count, age);
+          }}
+        >
+          나이 증가
+        </button>
+      </div>
 
       {alert === true ? (
         <div className="my-alert2">

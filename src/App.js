@@ -3,14 +3,18 @@
 /* eslint-disable no-unused-vars */
 import './App.css';
 import { Jumbotron, Button } from 'react-bootstrap';
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, lazy, Suspense } from 'react';
 import Product from './components/product';
 import data from './data';
 import { Route, Switch } from 'react-router-dom';
-import Detail from './components/detail';
 import Header from './components/header';
 import Cart from './components/Cart';
 import axios from 'axios';
+
+//import Detail from './components/detail';
+let Detail = lazy(() => {
+  return import('./components/Detail.js');
+});
 
 export const rangecontext = React.createContext(); // 같은 변수 값을 공유할 범위 생성
 
@@ -76,11 +80,13 @@ function App() {
           </Route>
 
           <Route path="/detail/:id">
-            <Detail
-              shoeData={shoeData}
-              inventory={inventory}
-              setInventory={setInventory}
-            />
+            <Suspense fallback={<div>로딩중</div>}>
+              <Detail
+                shoeData={shoeData}
+                inventory={inventory}
+                setInventory={setInventory}
+              />
+            </Suspense>
           </Route>
 
           <Route path="/cart">
