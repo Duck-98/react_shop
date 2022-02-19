@@ -22,9 +22,6 @@ const Detail = (props) => {
   const [tab, setTab] = useState(0);
   const [value, setValue] = useState(false);
 
-  const [count, setCount] = useState(0);
-  const [age, setAge] = useState(20);
-
   useEffect(() => {
     // component가 Mount 될 때 컴포넌트가 UPDATE될 때 특정 코드를 실행시킬 수 있다.
     const timer = setTimeout(() => {
@@ -35,11 +32,21 @@ const Detail = (props) => {
     };
   }, [alert, data]); // alert가 변경이 될때만 실행이 됨.
 
+  // 최근 본 항목 ui 기능
   useEffect(() => {
-    if (count != 0 && count < 3) {
-      setAge(age + 1);
+    let arr = localStorage.getItem('watched');
+    if (arr == null) {
+      arr = [];
+    } else {
+      arr = JSON.parse(arr);
     }
-  }, [count]);
+
+    arr.push(id); // useParams를 이용하여 가져온 id 변수
+    arr = new Set(arr); // set 자료형은 array와 같지만 중복을 자동으로 제거해줌.
+    arr = [...arr];
+
+    localStorage.setItem('watched', JSON.stringify(arr));
+  }, []);
 
   const { id } = useParams();
   const history = useHistory();
@@ -51,18 +58,6 @@ const Detail = (props) => {
       <Box>
         <Subject className="red">Detail</Subject>
       </Box>
-
-      <div>
-        <div>안녕하세요 전 {age}</div>
-        <button
-          onClick={() => {
-            setCount(count + 1);
-            console.log(count, age);
-          }}
-        >
-          나이 증가
-        </button>
-      </div>
 
       {alert === true ? (
         <div className="my-alert2">
@@ -161,5 +156,4 @@ function data(state) {
     alertState: state.reducer2,
   };
 }
-
 export default connect(data)(Detail);
